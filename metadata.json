@@ -1,0 +1,5 @@
+{
+  "name": "PWS Workouts",
+  "description": "A smart workout tracker integrated with Google Sheets.",
+  "requestFramePermissions": []
+}
