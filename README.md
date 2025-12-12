@@ -26,6 +26,7 @@ VITE_GOOGLE_API_KEY=yyyyyyyyyyyy
 1. Create Project for use with the application.
 2. Create OAuth 2.0 Client ID under `APIs and Services > Credentials`. Add Authorized Javascript origins for testing and deployment (`http://localhost:5173` for local and `https://www.example.com` for your live app.)
 3. Enable the required APIs for the project under `APIs and Services > Enabled APIs and Services`.
+- Requires: `Google Sheets API`, `Google Drive API`, `Google Picker API`.
 4. Create an API Key under `APIs and Services > Credentials`. Restrict it as necessary, and scope down to only use the required applications that you granted to the project.
 5. Configure OAuth consent screen. Add authorized test users for testing phase.
 
