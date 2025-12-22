@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { ExerciseDef } from '../types';
+import { ExerciseDefinition } from '../types';
 import { useExerciseSearch } from '../hooks/useExerciseSearch';
 import ExerciseFilterUI from './ExerciseFilterUI';
 import { Search, Filter, Image as ImageIcon, Dumbbell, Info } from 'lucide-react';
 
 interface BrowseProps {
-  exercises: ExerciseDef[];
+  exercises: ExerciseDefinition[];
 }
 
 const Browse: React.FC<BrowseProps> = ({ exercises }) => {

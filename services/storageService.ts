@@ -1,8 +1,8 @@
-import { ExerciseDef, WorkoutLog, AppSettings, WorkoutSet, ExerciseType } from '../types';
+import { ExerciseDefinition, WorkoutLog, AppSettings, WorkoutSet, ExerciseType } from '../types';
 
 // Local Data
 let WORKOUT_LOG: WorkoutLog[] = [];
-let EXERCISE_DEFINITIONS: ExerciseDef[] = [];
+let EXERCISE_DEFINITIONS: ExerciseDefinition[] = [];
 
 const STORAGE_KEY_SETTINGS = 'pws_settings';
 
@@ -11,13 +11,13 @@ const getLocalISODate = (): string => {
 };
 
 // Default Data
-const SEED_EXERCISES: ExerciseDef[] = [
-  { id: 'ex_1', name: 'Bench Press', muscleGroups: ['Chest', 'Triceps'], description: 'Barbell bench press', type: 'WEIGHT' },
-  { id: 'ex_2', name: 'Squat', muscleGroups: ['Legs', 'Glutes'], description: 'Back squat', type: 'WEIGHT' },
-  { id: 'ex_3', name: 'Plank', muscleGroups: ['Core'], description: 'Front plank', type: 'TIME' },
-  { id: 'ex_4', name: 'Overhead Press', muscleGroups: ['Shoulders'], description: 'Standing barbell press', type: 'WEIGHT' },
-  { id: 'ex_5', name: 'Pull Up', muscleGroups: ['Back', 'Biceps'], description: 'Bodyweight pull up', type: 'REPS' },
-  { id: 'ex_6', name: 'Push Up', muscleGroups: ['Chest', 'Triceps'], description: 'Standard push up', type: 'REPS' },
+const SEED_EXERCISES: ExerciseDefinition[] = [
+  { id: 'ex_1', name: 'Bench Press', type: 'WEIGHT', muscleGroups: ['CHEST', 'TRICEPS'], description: 'Barbell bench press', formNotes: 'Keep feet flat on the ground.' },
+  { id: 'ex_2', name: 'Squat', type: 'WEIGHT', muscleGroups: ['LEGS', 'GLUTES'], description: 'Back squat', formNotes: 'Keep back straight.' },
+  { id: 'ex_3', name: 'Plank', type: 'TIME', muscleGroups: ['CORE'], description: 'Front plank', formNotes: 'Keep body in a straight line.' },
+  { id: 'ex_4', name: 'Overhead Press', type: 'WEIGHT', muscleGroups: ['SHOULDERS'], description: 'Standing barbell press', formNotes: 'Keep core tight.' },
+  { id: 'ex_5', name: 'Pull Up', type: 'REPS', muscleGroups: ['BACK', 'BICEPS'], description: 'Bodyweight pull up', formNotes: 'Keep arms straight.' },
+  { id: 'ex_6', name: 'Push Up', type: 'REPS', muscleGroups: ['CHEST', 'TRICEPS'], description: 'Standard push up', formNotes: 'Keep body in a straight line.' },
 ];
 
 const SEED_LOGS: WorkoutLog[] = [
@@ -46,7 +46,7 @@ export const saveSettings = (settings: AppSettings) => {
   sessionStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(settings));
 };
 
-export const getExercises = async (): Promise<ExerciseDef[]> => {
+export const getExercises = async (): Promise<ExerciseDefinition[]> => {
   return [...EXERCISE_DEFINITIONS];
 };
 
@@ -116,7 +116,7 @@ const generateSignature = (date: string, exName: string, setIdx: number, reps: n
 };
 
 // Helper: Group flat rows into structured WorkoutLogs
-const groupParsedRows = (rows: any[], exercises: ExerciseDef[]): WorkoutLog[] => {
+const groupParsedRows = (rows: any[], exercises: ExerciseDefinition[]): WorkoutLog[] => {
     const grouped: WorkoutLog[] = [];
     const setCounters = new Map<string, number>();
 
@@ -179,7 +179,7 @@ export const pullDataFromSheets = async (): Promise<{ success: boolean, message:
     // Structure: Name(A), Type(B), Muscle Groups(C), Description(D), Notes(E)
     const exUrl = `${SHEETS_BASE_URL}/${settings.spreadsheetId}/values/${TAB_EXERCISES}!A2:E`;
     const exData = await fetchSheetsApi(exUrl, 'GET', settings.accessToken);
-    let remoteExercises: ExerciseDef[] = [];
+    let remoteExercises: ExerciseDefinition[] = [];
     
     if (exData.values && exData.values.length > 0) {
         remoteExercises = exData.values.map((row: string[], idx: number) => {

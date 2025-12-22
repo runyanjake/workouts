@@ -1,12 +1,12 @@
 import { useState, useMemo } from 'react';
-import { ExerciseDef, ExerciseType } from '../types';
+import { ExerciseDefinition, ExerciseType } from '../types';
 
 export interface FilterState {
   types: ExerciseType[];
   muscles: string[];
 }
 
-export const useExerciseSearch = (exercises: ExerciseDef[]) => {
+export const useExerciseSearch = (exercises: ExerciseDefinition[]) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState<FilterState>({ types: [], muscles: [] });
 

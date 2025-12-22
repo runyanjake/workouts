@@ -5,13 +5,13 @@ import Settings from './components/Settings';
 import Browse from './components/Browse';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { TabView, WorkoutLog, ExerciseDef } from './types';
+import { TabView, WorkoutLog, ExerciseDefinition } from './types';
 import * as storageService from './services/storageService';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabView>(TabView.TRACKER);
   const [logs, setLogs] = useState<WorkoutLog[]>([]);
-  const [exercises, setExercises] = useState<ExerciseDef[]>([]);
+  const [exercises, setExercises] = useState<ExerciseDefinition[]>([]);
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [saving, setSaving] = useState(false);

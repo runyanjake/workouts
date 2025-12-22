@@ -3,13 +3,13 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   AreaChart, Area, LineChart, Line, Legend
 } from 'recharts';
-import { WorkoutLog, ExerciseDef, ChartDataPoint } from '../types';
+import { WorkoutLog, ExerciseDefinition, ChartDataPoint } from '../types';
 import { TrendingUp, BarChart2, Calendar, Clock, ArrowUpRight, Minus, Timer, Activity, Hash, Layers } from 'lucide-react';
 import ExerciseSelect from './ExerciseSelect';
 
 interface AnalyticsProps {
   logs: WorkoutLog[];
-  exercises: ExerciseDef[];
+  exercises: ExerciseDefinition[];
 }
 
 type TimeRange = 'ALL' | '1Y' | '3M';

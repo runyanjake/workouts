@@ -1,12 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { ExerciseDef, WorkoutLog, WorkoutSet } from '../types';
+import { ExerciseDefinition, WorkoutLog, WorkoutSet } from '../types';
 import * as storageService from '../services/storageService';
 import { Plus, Trash2, CheckCircle, Circle, Dumbbell, AlertCircle, Timer, Calendar, ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import ExerciseSelect from './ExerciseSelect';
 
 interface TrackerProps {
   logs: WorkoutLog[];
-  exercises: ExerciseDef[];
+  exercises: ExerciseDefinition[];
   onUpdate: () => void;
 }
 

@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ExerciseDef } from '../types';
+import { ExerciseDefinition } from '../types';
 import { useExerciseSearch } from '../hooks/useExerciseSearch';
 import ExerciseFilterUI from './ExerciseFilterUI';
 import { Search, Filter, ChevronDown } from 'lucide-react';
 
 interface ExerciseSelectProps {
-  exercises: ExerciseDef[];
+  exercises: ExerciseDefinition[];
   selectedId: string;
   onSelect: (id: string) => void;
   placeholder?: string;
