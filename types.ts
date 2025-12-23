@@ -35,6 +35,7 @@ export interface WorkoutSet {
   weight?: number;
   time?: number; // seconds
   completed: boolean;
+  synced?: boolean; // Track if synced to sheet
 }
 
 export interface WorkoutLog {
@@ -44,15 +45,6 @@ export interface WorkoutLog {
   sets: WorkoutSet[];
   notes?: string;
   synced?: boolean; // Track if synced to sheet
-}
-
-export interface FlatLog {
-  date: string;
-  exerciseName: string;
-  setIndex: number;
-  reps: number;
-  weight: number;
-  notes: string;
 }
 
 export enum TabView {

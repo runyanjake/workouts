@@ -208,11 +208,13 @@ const Tracker: React.FC<TrackerProps> = ({ logs, exercises, onUpdate }) => {
                              </>
                          )}
 
-                         {log.synced && (
-                           <div title="Synced to Sheet">
-                              <CheckCircle className="w-3 h-3 text-green-500" />
-                           </div>
-                         )}
+                        <div title={log.synced ? "Synced to Sheet" : "Not Synced"}>
+                          { log.synced ? (
+                            <CheckCircle className="w-3 h-3 text-green-500" />
+                          ) : (
+                            <AlertCircle className="w-3 h-3 text-orange-500" />
+                          )}
+                        </div>
                     </div>
                     <div className="flex gap-2 mt-1">
                         <span className="text-xs px-2 py-0.5 bg-white border border-slate-200 rounded-full text-slate-500">
